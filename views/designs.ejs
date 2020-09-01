@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Mary Knitting Mill!!</h1>
+            <P>View our well knitted and designed caps all over the world. </P>
+            <a class="btn btn-large btn-success " href="/designs/new">Make an order now</a>
+        </div>
+    </header>
+
+    <div class="row d-flex flex-wrap text-center">
+
+        <% designs.forEach(function(design){ %>
+
+        <div class=" col-md-3 col-sm-6">
+            <div class="thumbnail">
+                <img src="<%= design.image %>" alt="#">
+                <div class="caption">
+                    <h6> <%= design.name %> </h6>
+
+                </div>
+            </div>
+        </div>
+        <% }); %>
+
+
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>
