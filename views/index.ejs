@@ -17,10 +17,15 @@
         <div class=" col-md-3 col-sm-6">
             <div class="thumbnail">
                 <img src="<%= design.image %>" alt="#">
-                <div class="caption">
+                 <div class="caption">
                     <h6> <%= design.name %> </h6>
-
+                    <h6> <%= design.size %> </h6>
+                    <span> <%= design.created.toDateString() %> </span>
                 </div>
+                <p>
+                    <a href="/designs/<%= design._id %>" class="btn btn-danger">More Info</a>
+                </p>
+               
             </div>
         </div>
         <% }); %>

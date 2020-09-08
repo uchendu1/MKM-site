@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<div class="container">
+
+    <h5><%=uniqDesign.name%></h5>
+
+    <img src="<%=uniqDesign.image%>" alt="#">
+    <h5><%=uniqDesign.size%></h5>
+
+    <form action="/designs/<%= uniqDesign._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-lg btn-danger">delete</button>
+    </form>
+</div>
+<%- include('partials/footer') %>
