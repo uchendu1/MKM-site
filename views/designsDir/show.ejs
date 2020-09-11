@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<div class="container">
+
+    <h5><%=foundDesign.name%></h5>
+
+    <img src="<%=foundDesign.image%>" alt="#">
+    <h5><%=foundDesign.size%></h5>
+
+    <% foundDesign.comments.forEach((comment) => { %>
+    <p>
+        <strong><%= comment.author %></strong> - <%= comment.text %>
+    </p>
+    <% }) %>
+
+    <form action="/designs/<%= foundDesign._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-lg btn-danger">delete</button>
+    </form>
+</div>
+<%- include('../partials/footer') %>
