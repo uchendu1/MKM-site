@@ -1,15 +1,21 @@
 <%- include('../partials/header') %>
 <div class="container">
 
-    <h5><%=foundDesign.name%></h5>
+    <h5><%= foundDesign.name %></h5>
 
-    <img src="<%=foundDesign.image%>" alt="#">
-    <h5><%=foundDesign.size%></h5>
+    <img src="<%= foundDesign.image%>" alt="#">
+    <h5><%= foundDesign.description  %></h5>
+
+    
+    <p>
+        <a class="btn btn-success" href="/designs/<%= foundDesign._id %>/comments/new"> Add New Comment </a>
+    </p> 
 
     <% foundDesign.comments.forEach((comment) => { %>
     <p>
         <strong><%= comment.author %></strong> - <%= comment.text %>
     </p>
+
     <% }) %>
 
     <form action="/designs/<%= foundDesign._id %>?_method=DELETE" method="POST">

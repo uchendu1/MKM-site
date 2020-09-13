@@ -7,6 +7,7 @@ var methodOverride = require("method-override");
 var expressSanitizer = require("express-sanitizer");
 var Design = require("./models/design");
 var seedDB = require("./seeds");
+var Comment = require("./models/comment");
 
 
 
@@ -82,7 +83,7 @@ app.post("/designs", (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            res.redirect("designsDir/designs");
+            res.redirect("designs");
 
         }
     });
@@ -98,11 +99,12 @@ app.get("/designs/new", (req, res) => {
 
 //show route
 app.get("/designs/:id", (req, res) => {
-
+//.populate.exec is to ref/ associate comments with the designs 
     Design.findById(req.params.id).populate("comments").exec((err, foundDesign) => {
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
+            console.log(foundDesign, "designs found");
             res.render("designsDir/show", {
                 foundDesign: foundDesign
             });
@@ -110,6 +112,18 @@ app.get("/designs/:id", (req, res) => {
         }
     });
 });
+
+
+app.get("/designs/:id/edit", (req, res) =>{
+    
+        res.render("designsDir/edit")
+    
+
+});
+
+
+
+
 
 app.delete("/designs/:id", (req, res) => {
     Design.findByIdAndRemove(req.params.id, (err) => {
@@ -127,21 +141,46 @@ app.delete("/designs/:id", (req, res) => {
 //(designs/:id/comments).POST
 
 // =======COMMENT ROUTES============
-app.get("/designs/:id/comments/new", (req, res)=>{
-    Design.findById(req.params.id, (err, foundComment) =>{
-        if(err){
+app.get("/designs/:id/comments/new", (req, res) => {
+    Design.findById(req.params.id, (err, foundComment) => {
+        if (err) {
             console.log(err)
-        } else { 
-            res.render("commentsDir/newComments", { foundComment: foundComment});
+        } else {
+            res.render("commentsDir/newComments", {
+                foundComment: foundComment
+            });
 
         }
     })
 });
 
-app.post("/designs/:id/comments", (req, res) =>{
-Design.create(req.params.newComment, () =>{
 
-});
+
+app.post("/designs/:id/comments", (req, res) => {
+    // res.send("new  comment")
+    // lookup designs using ID 
+    Design.findById(req.params.id, (err, design) => {
+        if (err) {
+            console.log(err)
+            res.redirect("/designs")
+        } else {
+            //create a new comment
+
+            Comment.create(req.body.newComment, (err, comment) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    design.comments.push(comment);
+
+                    design.save();
+                    console.log("comment created and saved")
+                    res.redirect("/designs/" + design._id);
+                }
+
+            });
+        }
+
+    });
 });
 
 
@@ -149,8 +188,3 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Port ${port} is listening..... `)
 });
-
-
-
-
-

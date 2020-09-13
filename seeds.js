@@ -25,55 +25,6 @@ var Data = [{
 ]
 
 
-// function seedDB() {
-//     //remove all designs
-//     Design.remove({}, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         console.log("designs removed")
-
-//         //  add a few designs
-
-//         Data.forEach(function (seed) {
-//             Design.create(seed, (err, data) => {
-//                 if (err) {
-//                     console.log(err)
-//                 } else {
-//                     console.log("added a design")
-//                     //  add a few comments
-//                     Comment.create(seed, (err, data) => {
-//                         if (err) {
-//                             console.log(err)
-//                         } else {  
-//                             console.log("added a design")
-//                             //create a comment
-//                         }
-//                         Comment.create({
-//                             text: "This is an awesome cap",
-//                             author: "linda"
-//                         })
-
-//                     }, function (err, comment) {
-//                         if (err) {
-//                             console.log(err)
-//                         } else {
-
-//                             data.comments.push(comment);
-//                             data.save();
-//                             console.log("created new comment")
-//                         }
-
-//                     });
-//                 }
-//             });
-//         })
-
-//     });
-
-
-
-// }
 
 function seedDB() {
     //remove all designs
@@ -88,7 +39,7 @@ function seedDB() {
                 if(err){
                     console.log(err)
                 } else {
-                    console.log("added a new design");
+                    console.log("added a new design, no error");
                     // ==========================
                     Comment.create({
                         text: "This is an awesome cap",
@@ -97,7 +48,7 @@ function seedDB() {
                         if(err){
                             console.log(err)
                         } else {
-
+//comments below is from the comment model
                             createdData.comments.push(comment)  
                             createdData.save();  
                             console.log("created new comment")
