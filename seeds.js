@@ -7,18 +7,18 @@ var Comment = require("./models/comment");
 var Data = [{
         name: "free knitting pattern",
         image: "https://bit.ly/3gDKdlO",
-        description: "medium, with a pony tail. black colour"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
     },
     {
         name: "wooly cap",
         image: "https://bit.ly/31GMGri",
-        description: "small, i want no pony tail, pink colour "
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo "
 
     },
     {
         name: "baby cap",
         image: "https://bit.ly/31JcNxP",
-        description: "extra small, with a black pony tail, gold colour,"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
 
     }
 
