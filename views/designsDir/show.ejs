@@ -54,5 +54,8 @@
 <form action="/designs/<%= foundDesign._id %>?_method=DELETE" method="POST">
     <button class="btn btn-lg btn-danger">delete</button>
 </form>
+
+<a class="btn btn-success" href="/designs/<%= foundDesign._id %>/edit"> Edit </a>
+
 </div>
 <%- include('../partials/footer') %>
